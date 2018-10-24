@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const uuidv4 = require('uuid/v4');
 const successTemplate = require('../client/success.js');
+const clientTemplate = require('../client/index.js');
 const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
@@ -36,7 +37,8 @@ client.connect()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
-app.use('/', express.static('./client'));
+
+app.get('/', (req, res) => res.send(clientTemplate());
 app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id)));
 app.post('/submit', (req, res)=>{
   console.log(req.body)
