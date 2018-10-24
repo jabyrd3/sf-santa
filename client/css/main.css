@@ -1,6 +1,33 @@
+body{
+  background-color: rgb(38, 62, 102);
+  color: white!important;
+}
+form, h1, h2, h3, p{
+  max-width: 40vw;
+  margin: 0 auto!important;
+  display: block;
+  padding: 10px 20px;
+  position: relative;
+}
+.success > *{
+  position: relative;
+  background-color: rgb(38, 62, 102);
+  z-index: 1000;
+  box-shadow: 0px 0px 30px 20px rgba(38,62,102);
+}
+.success p{
+  margin-top: 20px!important;
+}
+h1{
+  z-index: 1001;
+}
 form{
-  max-width: 40%;
-  margin: 0 auto;
+  background-color: rgb(38, 62, 102);
+  z-index: 1000;
+  box-shadow: 0px 0px 60px 40px rgba(38,62,102);
+}
+input{
+  color: white;
 }
 fieldset div{
   float: left;
@@ -17,7 +44,82 @@ fieldset input, fieldset label{
   margin-bottom:0px;
 }
 @media (max-width: 650px) { 
-  form{
+  form, h1, h2, h3, p{
     max-width: 100%;
+  }
+}
+.snow-container {
+  position: absolute;
+  height: 500px;
+  width: 100%;
+  max-width: 100%;
+  top: 0;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.snow {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+  -webkit-animation: snow linear infinite;
+          animation: snow linear infinite;
+}
+.snow.foreground {
+  background-image: url("https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-large-075d267ecbc42e3564c8ed43516dd557.png");
+  background-
+  -webkit-animation-duration: 15s;
+          animation-duration: 15s;
+}
+.snow.foreground.layered {
+  -webkit-animation-delay: 7.5s;
+          animation-delay: 7.5s;
+}
+.snow.middleground {
+  background-image: image-url("https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-medium-0b8a5e0732315b68e1f54185be7a1ad9.png");
+  -webkit-animation-duration: 20s;
+          animation-duration: 20s;
+}
+.snow.middleground.layered {
+  -webkit-animation-delay: 10s;
+          animation-delay: 10s;
+}
+.snow.background {
+  background-image: image-url("https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-small-1ecd03b1fce08c24e064ff8c0a72c519.png");
+  -webkit-animation-duration: 30s;
+          animation-duration: 30s;
+}
+.snow.background.layered {
+  -webkit-animation-delay: 15s;
+          animation-delay: 15s;
+}
+
+@-webkit-keyframes snow {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(15%, 100%, 0);
+            transform: translate3d(15%, 100%, 0);
+  }
+}
+
+@keyframes snow {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(15%, 100%, 0);
+            transform: translate3d(15%, 100%, 0);
   }
 }

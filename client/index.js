@@ -27,7 +27,14 @@ module.exports = () => `<!doctype html>
           <input type="text" name="address" value=""/>
           <button role="submit">send</button>
         </form>
-
+        <div class="snow-container">
+          <div class="snow foreground"></div>
+          <div class="snow foreground layered"></div>
+          <div class="snow middleground"></div>
+          <div class="snow middleground layered"></div>
+          <div class="snow background"></div>
+          <div class="snow background layered">
+        </div>
       </div>
     </body>
 </html>`;
