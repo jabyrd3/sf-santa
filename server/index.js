@@ -20,7 +20,7 @@ server.listen(config.port, '0.0.0.0');
 
 const client = new Client(config.db);
 client.connect()
-  .then(client.query({
+  .then(()=>client.query({
     name: 'createdb',
     text: `CREATE TABLE IF NOT EXISTS "santa"(
       "name" varchar(100),
