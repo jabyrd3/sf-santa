@@ -14,9 +14,9 @@ module.exports = (id) => `<!doctype html>
     <body>
       <div class="container">
         <div class="success">
-            <h1>BOOKMARK THIS PAGE!</h1>
-            <p>when we've done the selection, your secret santa partner will be visible at this link</p>
-            <p>For reference: your id is: ${id}</p>
+            <h1>ALL DONE!</h1>
+            <p>when we've done the selection, your secret santa partner will be visible at this page.</p>
+            <p>we will also send an email with a link to this page when it's ready</p>
         </div>
       </div>
               <div class="snow-container">
