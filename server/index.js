@@ -15,7 +15,7 @@ const fs = require('fs');
 const gifs = fs.readdirSync('./client/gifs');
 
 server.listen(config.port, '0.0.0.0');
-
+console.log('starting app');
 const client = new Client(config.db);
 client.connect()
   .then(() => client.query({
