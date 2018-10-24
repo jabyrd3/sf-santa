@@ -7,6 +7,7 @@ const server = http.createServer(app);
 const uuidv4 = require('uuid/v4');
 const successTemplate = require('../client/success.js');
 const clientTemplate = require('../client/index.js');
+const adminTemplate = require('../client/admin.js');
 const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
@@ -34,7 +35,18 @@ app.use('/', express.static('./client'));
 
 app.get('/', (req, res) => res.send(clientTemplate()));
 app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id)));
-app.get('/admin', (req, res) => res.send('u found the admin page i guess'))
+app.get('/admin', (req, res) => {
+  const client = new Client(config.db);
+  client.connect()
+    .then(() => {
+      client.query({
+        name: 'admin',
+        text: 'SELECT * FROM santa',
+      })
+      .then(rows=>res.send(adminTemplate(rows.rows)))
+      .catch(console.log)
+    });
+});
 app.post('/submit', (req, res)=>{
   const client = new Client(config.db);
   client.connect()
