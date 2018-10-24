@@ -37,7 +37,7 @@ form{
   z-index: 1000;
   box-shadow: 0px 0px 60px 40px rgba(38,62,102);
 }
-input{
+input, textarea{
   color: white;
 }
 fieldset div{

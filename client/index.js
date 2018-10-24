@@ -25,7 +25,7 @@ module.exports = () => `<!doctype html>
 
           <label for="address">your address</label>
 
-          <input type="text" name="address" value="" required/>
+          <textarea name="address" value="" required></textarea>
           <button role="submit">send</button>
         </form>
         <div class="gritty"></div>
