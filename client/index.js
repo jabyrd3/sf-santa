@@ -25,21 +25,6 @@ module.exports = () => `<!doctype html>
           <label for="address">your address</label>
 
           <input type="text" name="address" value=""/>
-          <fieldset>
-            <legend>how much do you post</legend>
-            <div>
-              <label for="norm">rarely</label>
-              <input type="radio" id="norm" name="activity" value="norm" checked />
-            </div>
-            <div>
-              <label for="activity">a lot</label>
-              <input type="radio" id="activity" name="activity" value="a lot" />
-            </div>
-            <div>
-              <label for="mod">i am a mod</label>
-              <input type="radio" id="mod" name="activity" value="mod" />
-            </div>
-          </fieldset>
           <button role="submit">send</button>
         </form>
 
