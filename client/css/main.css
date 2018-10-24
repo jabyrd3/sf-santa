@@ -2,6 +2,9 @@ body{
   background-color: rgb(38, 62, 102);
   color: white!important;
 }
+*{
+  font-family: "Times New Roman", serif!important;
+}
 form, h1, h2, h3, p{
   max-width: 40vw;
   margin: 0 auto!important;
@@ -50,7 +53,7 @@ fieldset input, fieldset label{
 }
 .snow-container {
   position: absolute;
-  height: 500px;
+  height: 100vh;
   width: 100%;
   max-width: 100%;
   top: 0;
@@ -58,7 +61,49 @@ fieldset input, fieldset label{
   z-index: 2;
   pointer-events: none;
 }
+.wreath{
+  background-image: url('/wreath_opt.png');
+  position: fixed;
+  right: 0px;
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: wreath cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+}
+.gritty{
+  animation: gritty cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  animation-fill-mode: forwards;
+  height: 200px;
+  width: 200px;
+  background-image: url('/gritty_santa_opt.png');
+  animation-duration: 2s;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  bottom: -200px;
+}
+@keyframes gritty {
+  0% {
+    transform: translate3d(0, 0px, 0);
+  }  
+  100% {
+    transform: translate3d(0, -200px, 0);
+  }
+}
 
+@keyframes wreath {
+  0% {
+    /*transform: translate3d(0, 0px, 0);*/
+    top: -200px;
+  }  
+  100% {
+    /*transform: translate3d(0, 0px, 0);*/
+    top: 0px;
+  }
+}
 .snow {
   display: block;
   position: absolute;
@@ -101,7 +146,6 @@ fieldset input, fieldset label{
   -webkit-animation-delay: 15s;
           animation-delay: 15s;
 }
-
 @-webkit-keyframes snow {
   0% {
     -webkit-transform: translate3d(0, -100%, 0);
