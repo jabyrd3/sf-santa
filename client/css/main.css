@@ -204,8 +204,16 @@ fieldset input, fieldset label{
   display: flex;
   flex-wrap: nowrap;
 }
+.center{
+  justify-content:center;
+}
 .flex-wrap > div{
   flex: 1 0 0;
   margin-right: 10px;
   display: block;
+}
+button{
+  border-width: 0px;
+  background-color: #F74902!important;
+  color: black!important;
 }
