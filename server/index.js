@@ -40,6 +40,7 @@ app.use(cors());
 
 app.get('/', (req, res) => res.send(clientTemplate());
 app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id)));
+app.get('/admin', (req, res) => res.send('u found the admin page i guess'))
 app.post('/submit', (req, res)=>{
   console.log(req.body)
   const client = new Client(config.db);
