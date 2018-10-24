@@ -12,7 +12,7 @@ form, h1, h2, h3, p{
   padding: 10px 20px;
   position: relative;
 }
-.success > *{
+.success > *:not(.img-wrap){
   position: relative;
   background-color: rgb(38, 62, 102);
   z-index: 1000;
