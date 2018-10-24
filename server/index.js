@@ -49,6 +49,19 @@ app.get('/admin', (req, res) => {
       .catch(console.log)
     });
 });
+app.get('/delete/:uuid', (req, res) => {
+  const client = new Client(config.db);
+  client.connect()
+    .then(() => {
+      client.query({
+        name: 'admin',
+        text: 'DELETE FROM santa WHERE uuid = $1 RETURNING *',
+        values: [req.params.uuid]
+      })
+      .then(rows=>res.send(adminTemplate(rows.rows)))
+      .catch(console.log)
+    });
+});
 app.post('/submit', (req, res)=>{
   const client = new Client(config.db);
   client.connect()

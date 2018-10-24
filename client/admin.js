@@ -26,6 +26,7 @@ module.exports = (rows) => `<!doctype html>
                     <td>${row.name}</td>
                     <td>${row.email}</td>
                     <td>${row.uuid}</td>
+                    <td><a href="/delete/${row.uuid}">delete</a></td>
                 </tr>`).join(' ')}
             </tbody>            
         </table>
