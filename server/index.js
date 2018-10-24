@@ -79,7 +79,7 @@ app.post('/submit', (req, res)=>{
     .then(() => {
       client.query({
         name: 'testingupdate',
-        text: 'INSERT INTO santa (name, email, address, recipient, uuid, address2, city, state, zip) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+        text: 'INSERT INTO santa (name, email, address, recipient, uuid, address2, city, state, zip) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
         values: [req.body.name, req.body.email, req.body['street-address'], null, uuidv4(), req.body['address-2'], req.body.city, req.body.state, req.body.zip],
       })
         .then(result => {
