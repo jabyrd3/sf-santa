@@ -11,6 +11,8 @@ const adminTemplate = require('../client/admin.js');
 const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
+const fs = require('fs');
+const gifs = fs.readdirSync('./client/gifs');
 
 server.listen(config.port, '0.0.0.0');
 
@@ -34,7 +36,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static('./client'));
 
 app.get('/', (req, res) => res.send(clientTemplate()));
-app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id)));
+app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id, gifs)));
 app.get('/admin', (req, res) => {
   const client = new Client(config.db);
   client.connect()

@@ -1,4 +1,6 @@
-module.exports = (id) => `<!doctype html>
+const _ = require('lodash');
+
+module.exports = (id, gifs) => `<!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -17,6 +19,9 @@ module.exports = (id) => `<!doctype html>
             <h1>ALL DONE!</h1>
             <p>when we've done the selection, your secret santa partner will be visible at this page.</p>
             <p>we will also send an email with a link to this page when it's ready</p>
+            <div class="img-wrap">
+              <img src="/gifs/${_.sample(gifs)}" />
+            </div>
         </div>
       </div>
               <div class="snow-container">
