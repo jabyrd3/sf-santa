@@ -15,7 +15,7 @@ module.exports = () => `<!doctype html>
     <div class="wreath"></div>
       <div class="container">
         <h1>streetfighters secret santa signup</h1>
-        <form method="POST" action="/submit">
+        <form method="POST" action="/submit" autocomplete="on">
 
           <label for="name">your name</label>
           <input id="name" type="text" name="name"  value="" autocomplete="name" required/>
@@ -24,10 +24,10 @@ module.exports = () => `<!doctype html>
           <input id="email" type="email" name="email" value="" required autocomplete="email"/>
 
           <label for="street-address">street</label>
-          <input id="street-address" name="street-address" value="" required autocomplete="address-line-1"></input>
+          <input id="street-address" name="street-address" value="" required autocomplete="address-line1"></input>
 
           <label for="address-2">city, state, postcode</label>
-          <input id="address-2" name="city-state-zip" value="" required autocomplete="address-line-2"></input>
+          <input id="address-2" name="city-state-zip" value="" required autocomplete="address-line2"></input>
 
           <button role="submit">send</button>
         </form>
