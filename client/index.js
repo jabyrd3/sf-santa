@@ -14,12 +14,12 @@ module.exports = () => `<!doctype html>
     <body>
     <div class="wreath"></div>
       <div class="container">
-        <h1>streetfighters secret santa signup</h1>
+        <h1>first annual street fighters<br/><span class="orange">SECRET GRITTY</span> gift x-change</h1>
         <form method="POST" action="/submit" autocomplete="on">
             <label for="name">your name</label>
             <input id="fullname" type="text" name="name" autocomplete="name" required/>
 
-            <label for="email">your email (just for game updates)</label> 
+            <label for="email">your email (just for x-change updates)</label> 
             <input id="email" type="email" name="email" required autocomplete="email"/>
             <div class="flex-wrap">
               <div>

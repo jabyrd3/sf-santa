@@ -1,12 +1,37 @@
+@font-face {
+    font-family: 'Cooper Black';
+    src: url('/css/fonts/cooper-black-webfont.eot');
+    src: url('/css/fonts/cooper-black-webfont.eot?#iefix') format('embedded-opentype'),
+        url('/css/fonts/cooper-black-webfont.woff') format('woff'),
+        url('/css/fonts/cooper-black-webfont.ttf') format('truetype'),
+        url('/css/fonts/cooper-black-webfont.svg#cooper_blackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 body{
   background-color: rgb(38, 62, 102);
   color: white!important;
 }
-*{
-  font-family: "Times New Roman", serif!important;
+h1{
+  font-family: "Cooper Black", "Times New Roman", serif!important;
 }
-form, h1, h2, h3, p{
-  max-width: 40vw;
+.orange{
+  color: #F74902;
+}
+.container{
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+h1{
+  margin: 0 auto!important;
+  max-width: 80vw;
+  padding: 10px 0;
+  text-align: center;
+  position:relative;
+  z-index: 2000;
+}
+form, h2, h3, p{
+  max-width: 60vw;
   margin: 0 auto!important;
   display: block;
   padding: 10px 20px;
@@ -178,7 +203,6 @@ fieldset input, fieldset label{
 .flex-wrap{
   display: flex;
   flex-wrap: nowrap;
-  margin-bottom: 20px;
 }
 .flex-wrap > div{
   flex: 1 0 0;
