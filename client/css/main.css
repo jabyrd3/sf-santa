@@ -89,9 +89,9 @@ fieldset input, fieldset label{
 .snow-container {
   position: absolute;
   height: 100vh;
-  width: 100%;
-  max-width: 100%;
+  width: 100vw;
   top: 0;
+  left: 0;
   overflow: hidden;
   z-index: 2;
   pointer-events: none;
