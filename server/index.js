@@ -54,5 +54,5 @@ app.post('/submit', (req, res)=>{
         })
         .catch(e => console.log(e) || client.end())
     })
-    .catch(e => client.end() || console.log(e))
+    .catch(e => console.log(e) || client.end() )
 });
