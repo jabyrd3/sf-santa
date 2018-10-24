@@ -1,0 +1,18 @@
+form{
+  max-width: 40%;
+  margin: 0 auto;
+}
+fieldset div{
+  float: left;
+  clear: both;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+fieldset input{
+  margin-left: 10px;
+}
+fieldset input, fieldset label{
+  padding-bottom: 0px;
+  margin-bottom:0px;
+}
