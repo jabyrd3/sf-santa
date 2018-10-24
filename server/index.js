@@ -26,8 +26,10 @@ client.connect()
       "email" varchar(100),
       "address" varchar(200),
       "address2" varchar(200),
+      "city" varchar(100),
+      "state" varchar(100),
+      "zip" varchar(100),
       "recipient" varchar(100),
-      "activity" varchar(10),
       "uuid" varchar(100)
     )`
   }))
@@ -77,8 +79,8 @@ app.post('/submit', (req, res)=>{
     .then(() => {
       client.query({
         name: 'testingupdate',
-        text: 'INSERT INTO santa (name, email, address, recipient, activity, uuid, address2) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-        values: [req.body.name, req.body.email, req.body['street-address'], null, req.body.activity, uuidv4(), req.body['city-state-zip']],
+        text: 'INSERT INTO santa (name, email, address, recipient, uuid, address2, city, state, zip) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+        values: [req.body.name, req.body.email, req.body['street-address'], null, uuidv4(), req.body['address-2'], req.body.city, req.body.state, req.body.zip],
       })
         .then(result => {
           console.log(`${req.body.name} signed up for secret santa, id is ${result.rows[0].id}`);

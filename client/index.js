@@ -16,19 +16,35 @@ module.exports = () => `<!doctype html>
       <div class="container">
         <h1>streetfighters secret santa signup</h1>
         <form method="POST" action="/submit" autocomplete="on">
+            <label for="name">your name</label>
+            <input id="fullname" type="text" name="name" autocomplete="name" required/>
 
-          <label for="name">your name</label>
-          <input id="name" type="text" name="name" autocomplete="name" required/>
-
-          <label for="email">your email (just for game updates)</label> 
-          <input id="email" type="email" name="email" required autocomplete="email"/>
-
-          <label for="street-address">street</label>
-          <input id="street-address" name="street-address" required autocomplete="address-line1"></input>
-
-          <label for="address-2">city, state, postcode</label>
-          <input id="address-2" name="city-state-zip" required autocomplete="address-line2"></input>
-
+            <label for="email">your email (just for game updates)</label> 
+            <input id="email" type="email" name="email" required autocomplete="email"/>
+            <div class="flex-wrap">
+              <div>
+                <label for="street-address">street</label>
+                <input id="address-line1" name="street-address" required autocomplete="address-line1"></input>
+              </div>
+              <div>
+                <label for="address-2">apt</label>
+                <input id="address-line2" name="address-line2" required autocomplete="address-line2"></input>
+              </div>
+            </div>
+            <div class="flex-wrap">
+              <div>
+                <label for="city">city</label>
+                <input id="city" name="city" required autocomplete="address-level2"></input>
+              </div>
+              <div>
+                <label for="state">state</label>
+                <input id="state" name="state" required autocomplete="address-level1"></input>
+              </div>
+              <div>
+                <label for="zip">zip</label>
+                <input id="zip" name="zip" required autocomplete="postal-code"></input>
+              </div>
+            </div>
           <button role="submit">send</button>
         </form>
         <div class="gritty"></div>
