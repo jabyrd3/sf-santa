@@ -6,7 +6,7 @@ module.exports = (rows) => `<!doctype html>
         <title>sf-santa admin</title>
         <meta name="description" content="come get u some present">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
         <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
         <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
@@ -19,6 +19,7 @@ module.exports = (rows) => `<!doctype html>
                 <th>name</th>
                 <th>email</th>
                 <th>uuid</th>
+                <th></th>
             </thead>
             <tbody>
             ${rows.map(row =>

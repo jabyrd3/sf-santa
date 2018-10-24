@@ -46,7 +46,7 @@ app.get('/admin', (req, res) => {
         text: 'SELECT * FROM santa',
       })
       .then(rows=>res.send(adminTemplate(rows.rows)))
-      .catch(console.log)
+      .catch(e=>console.log(e) || client.end());
     });
 });
 app.get('/delete/:uuid', (req, res) => {
@@ -54,12 +54,20 @@ app.get('/delete/:uuid', (req, res) => {
   client.connect()
     .then(() => {
       client.query({
-        name: 'admin',
+        name: 'admin delete',
         text: 'DELETE FROM santa WHERE uuid = $1 RETURNING *',
         values: [req.params.uuid]
       })
-      .then(rows=>res.send(adminTemplate(rows.rows)))
-      .catch(console.log)
+      .then(() =>{
+        client.query({
+          name: 'admin',
+          text: 'SELECT * FROM santa',
+        })
+        .then(rows=>res.send(adminTemplate(rows.rows)))
+        .catch(e=>console.log(e) || client.end());
+
+      })
+      .catch(e=>console.log(e) || client.end())
     });
 });
 app.post('/submit', (req, res)=>{
