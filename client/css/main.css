@@ -16,7 +16,7 @@ fieldset input, fieldset label{
   padding-bottom: 0px;
   margin-bottom:0px;
 }
-media (max-width: 599px) { 
+@media (max-width: 650px) { 
   form{
     max-width: 100%;
   }
