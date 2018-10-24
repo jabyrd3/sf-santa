@@ -18,14 +18,14 @@ module.exports = () => `<!doctype html>
         <form method="POST" action="/submit">
 
           <label for="name">your name</label>
-          <input id="name" type="text" name="name"  value="" autocomplete required/>
+          <input id="name" type="text" name="name"  value="" autocomplete="name" required/>
 
           <label for="email">your email (just for game updates)</label> 
-          <input id="email" type="email" name="email" value="" required autocomplete/>
+          <input id="email" type="email" name="email" value="" required autocomplete="email"/>
 
           <label for="address">your address</label>
 
-          <input id="address" name="address" value="" required autocomplete></input>
+          <input id="address" name="address" value="" required autocomplete="street-address"></input>
           <button role="submit">send</button>
         </form>
         <div class="gritty"></div>
