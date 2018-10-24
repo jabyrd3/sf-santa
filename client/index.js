@@ -23,9 +23,12 @@ module.exports = () => `<!doctype html>
           <label for="email">your email (just for game updates)</label> 
           <input id="email" type="email" name="email" value="" required autocomplete="email"/>
 
-          <label for="address">your address</label>
+          <label for="street-address">street</label>
+          <input id="street-address" name="street-address" value="" required autocomplete="address-line-1"></input>
 
-          <input id="address" name="address" value="" required autocomplete="street-address"></input>
+          <label for="address-2">city, state, postcode</label>
+          <input id="address-2" name="city-state-zip" value="" required autocomplete="address-line-2"></input>
+
           <button role="submit">send</button>
         </form>
         <div class="gritty"></div>
