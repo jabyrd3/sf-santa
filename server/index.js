@@ -11,17 +11,11 @@ const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
 
-console.log(config)
 server.listen(config.port, '0.0.0.0');
-/*CREATE TABLE IF NOT EXISTS "Team"(
-  "id" SERIAL,
-  "name" varchar(50) NOT NULL,
-  "description" varchar(255)
-);*/
 
 const client = new Client(config.db);
 client.connect()
-  .then(()=> client.query({
+  .then(() => client.query({
     name: 'createdb',
     text: `CREATE TABLE IF NOT EXISTS "santa"(
       "id" SERIAL,
@@ -36,13 +30,12 @@ client.connect()
   .catch(e => console.log("db seed failed", e));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
+app.use('/', express.static('./client'));
 
 app.get('/', (req, res) => res.send(clientTemplate()));
 app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id)));
 app.get('/admin', (req, res) => res.send('u found the admin page i guess'))
 app.post('/submit', (req, res)=>{
-  console.log(req.body)
   const client = new Client(config.db);
   client.connect()
     .then(() => {
