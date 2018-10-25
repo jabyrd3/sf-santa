@@ -28,7 +28,7 @@ module.exports = () => `<!doctype html>
               </div>
               <div>
                 <label for="address-2">apt</label>
-                <input id="address-line2" name="address-line2" required autocomplete="address-line2"></input>
+                <input id="address-line2" name="address-line2" autocomplete="address-line2"></input>
               </div>
             </div>
             <div class="flex-wrap">
