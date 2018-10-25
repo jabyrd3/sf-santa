@@ -15,7 +15,7 @@ module.exports = (rows) => `<!doctype html>
     </head>
     <body>
       <div class="container">
-        <h1>secret santa admin</h1>
+        <h1>secret santa admin – ${rows.length} signups</h1>
         <table>
             <thead>
                 <th>name</th>
