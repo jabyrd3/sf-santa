@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 module.exports = (rows) => `<!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -19,18 +21,26 @@ module.exports = (rows) => `<!doctype html>
                 <th>name</th>
                 <th>email</th>
                 <th>uuid</th>
+                <th>recipient</th>
                 <th></th>
             </thead>
             <tbody>
-            ${rows.map(row =>
+            ${_.sortBy(rows, 'name').map(row =>
                 `<tr>
                     <td>${row.name}</td>
                     <td>${row.email}</td>
                     <td>${row.uuid}</td>
+                    <td>${(()=>{
+                        const target = rows.find(r => r.uuid === row.recipient)
+                        return target ? target.name : null
+                    })()}</td>
                     <td><a href="/delete/${row.uuid}">delete</a></td>
                 </tr>`).join(' ')}
             </tbody>            
         </table>
+        <div class="flex-wrap center">
+            <a href="/admin/randomize">Randomize!</a>
+        </div>
       </div>
     </body>
 </html>`;

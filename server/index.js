@@ -13,33 +13,40 @@ const config = require('../config');
 const cp = require('child_process');
 const fs = require('fs');
 const gifs = fs.readdirSync('./client/gifs');
+const randomize = require('./randomize');
 
 server.listen(config.port, '0.0.0.0');
 console.log('starting app');
 const client = new Client(config.db);
 client.connect()
-  .then(() => client.query({
-    name: 'createdb',
-    text: `CREATE TABLE IF NOT EXISTS "santa"(
-      "id" SERIAL,
-      "name" varchar(100),
-      "email" varchar(100),
-      "address" varchar(200),
-      "address2" varchar(200),
-      "city" varchar(100),
-      "state" varchar(100),
-      "zip" varchar(100),
-      "recipient" varchar(100),
-      "uuid" varchar(100)
-    )`
-  }))
+  .then(() => {
+    client.query({
+      name: 'createdb',
+      text: `CREATE TABLE IF NOT EXISTS "santa"(
+        "id" SERIAL,
+        "name" varchar(100),
+        "email" varchar(100),
+        "address" varchar(200),
+        "address2" varchar(200),
+        "city" varchar(100),
+        "state" varchar(100),
+        "zip" varchar(100),
+        "recipient" varchar(100),
+        "uuid" varchar(100)
+      )`
+    });
+    client.end();
+  })
   .catch(e => console.log("db seed failed", e));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static('./client'));
 
 app.get('/', (req, res) => res.send(clientTemplate()));
+
 app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id, gifs)));
+
 app.get('/admin', (req, res) => {
   const client = new Client(config.db);
   client.connect()
@@ -52,6 +59,7 @@ app.get('/admin', (req, res) => {
       .catch(e=>console.log(e) || client.end());
     });
 });
+
 app.get('/delete/:uuid', (req, res) => {
   const client = new Client(config.db);
   client.connect()
@@ -73,6 +81,7 @@ app.get('/delete/:uuid', (req, res) => {
       .catch(e=>console.log(e) || client.end())
     });
 });
+
 app.post('/submit', (req, res)=>{
   const client = new Client(config.db);
   client.connect()
@@ -90,4 +99,10 @@ app.post('/submit', (req, res)=>{
         .catch(e => console.log(e) || client.end())
     })
     .catch(e => console.log(e) || client.end() )
+});
+
+app.get('/admin/randomize', (req, res) => {
+  randomize()
+    .then(rows => 
+      res.send(adminTemplate(rows)))
 });
