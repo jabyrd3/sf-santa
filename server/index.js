@@ -107,7 +107,7 @@ app.get('/admin/randomize', (req, res) => {
       res.send(adminTemplate(rows)))
 });
 
-app.get('/admin/emails/:token', (req, res) => {
+app.get('/emails/:token', (req, res) => {
 
   if(req.params.token !== config.magicToken){
     return res.status(401).send('invalid magic token');
