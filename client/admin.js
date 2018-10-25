@@ -22,6 +22,7 @@ module.exports = (rows) => `<!doctype html>
                 <th>email</th>
                 <th>uuid</th>
                 <th>recipient</th>
+                <th>cool with international</th>
                 <th></th>
             </thead>
             <tbody>
@@ -34,6 +35,7 @@ module.exports = (rows) => `<!doctype html>
                         const target = rows.find(r => r.uuid === row.recipient)
                         return target ? target.name : null
                     })()}</td>
+                    <td>${row.international}</td>
                     <td><a href="/delete/${row.uuid}">delete</a></td>
                 </tr>`).join(' ')}
             </tbody>            
