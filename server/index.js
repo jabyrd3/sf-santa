@@ -106,3 +106,17 @@ app.get('/admin/randomize', (req, res) => {
     .then(rows => 
       res.send(adminTemplate(rows)))
 });
+
+app.get('/admin/emails/:token', (req, res) => {
+
+  if(req.params.token !== config.magicToken){
+    return res.status(401).send('invalid magic token');
+  }
+
+  const client = new Client(config.db);
+  client.connect()
+    .then(() => {
+      client.query('SELECT * FROM santa', (err, result)=> res.json(result.rows));
+    })
+    .catch(console.log);
+});

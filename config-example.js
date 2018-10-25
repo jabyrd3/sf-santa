@@ -4,5 +4,6 @@ module.exports = {
     user: 'postgres',
     database: 'postgres',
     host: 'postgres'
-  }
+  },
+  magicToken: '' // some string for validating api clients, akin to the emailer
 };
