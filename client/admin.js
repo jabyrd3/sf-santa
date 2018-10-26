@@ -20,7 +20,7 @@ module.exports = (rows) => `<!doctype html>
             <thead>
                 <th>name</th>
                 <th>email</th>
-                <th>uuid</th>
+                <th>country</th>
                 <th>recipient</th>
                 <th>cool with international</th>
                 <th></th>
@@ -30,7 +30,7 @@ module.exports = (rows) => `<!doctype html>
                 `<tr>
                     <td>${row.name}</td>
                     <td>${row.email}</td>
-                    <td>${row.uuid}</td>
+                    <td>${row.country}</td>
                     <td>${(()=>{
                         const target = rows.find(r => r.uuid === row.recipient)
                         return target ? target.name : null
