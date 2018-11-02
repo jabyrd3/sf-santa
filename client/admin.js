@@ -26,7 +26,7 @@ module.exports = (rows) => `<!doctype html>
                 <th></th>
             </thead>
             <tbody>
-            ${_.sortBy(rows, 'name').map(row =>
+            ${_.sortBy(rows, 'email').map(row =>
                 `<tr>
                     <td>${row.name}</td>
                     <td>${row.email}</td>
@@ -42,6 +42,7 @@ module.exports = (rows) => `<!doctype html>
         </table>
         <div class="flex-wrap center">
             <a href="/admin/randomize">Randomize!</a>
+            <a href="/admin/dedupe">dedupe</a>
         </div>
       </div>
     </body>

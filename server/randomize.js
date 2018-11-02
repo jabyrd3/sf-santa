@@ -18,7 +18,6 @@ const shakeAndBake = (rows, pool, release) => {
           return rej(err);
         }
         console.log('single row finished', result.rows[0])
-        release();
         return res(result.rows[0]);
       });
     }));
