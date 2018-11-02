@@ -8,12 +8,14 @@ const uuidv4 = require('uuid/v4');
 const successTemplate = require('../client/success.js');
 const clientTemplate = require('../client/index.js');
 const adminTemplate = require('../client/admin.js');
+const editTemplate = require('../client/edit.js');
 const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
 const fs = require('fs');
 const gifs = fs.readdirSync('./client/gifs');
 const randomize = require('./randomize');
+const edit = require('./edit');
 
 server.listen(config.port, '0.0.0.0');
 console.log('starting app');
@@ -57,12 +59,15 @@ app.get('/admin', (req, res) => {
         name: 'admin',
         text: 'SELECT * FROM santa',
       })
-      .then(rows=>res.send(adminTemplate(rows.rows)))
+      .then(rows => {
+        client.end()
+        res.send(adminTemplate(rows.rows));
+      })
       .catch(e=>console.log(e) || client.end());
     });
 });
 
-app.get('/delete/:uuid', (req, res) => {
+app.get('/admin/delete/:uuid', (req, res) => {
   const client = new Client(config.db);
   client.connect()
     .then(() => {
@@ -71,13 +76,16 @@ app.get('/delete/:uuid', (req, res) => {
         text: 'DELETE FROM santa WHERE uuid = $1 RETURNING *',
         values: [req.params.uuid]
       })
-      .then(() =>{
+      .then(() => {
         client.query({
           name: 'admin',
           text: 'SELECT * FROM santa',
         })
-        .then(rows=>res.send(adminTemplate(rows.rows)))
-        .catch(e=>console.log(e) || client.end());
+        .then(rows => {
+          client.end();
+          res.send(adminTemplate(rows.rows));
+        })
+        .catch(e => console.log(e) || client.end());
 
       })
       .catch(e=>console.log(e) || client.end())
@@ -93,15 +101,27 @@ app.post('/submit', (req, res)=>{
         text: 'INSERT INTO santa (name, email, address, recipient, uuid, address2, city, state, zip, international, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
         values: [req.body.name, req.body.email, req.body['street-address'], null, uuidv4(), req.body['address-2'], req.body.city, req.body.state, req.body.zip, req.body.international||false, req.body.country || null],
       })
-        .then(result => {
-          console.log(`${req.body.name} signed up for secret santa, id is ${result.rows[0].id}`);
-          client.end();
-          res.redirect(`/success/${result.rows[0].uuid}`)
-        })
-        .catch(e => console.log(e) || client.end())
+      .then(result => {
+        console.log(`${req.body.name} signed up for secret santa, id is ${result.rows[0].id}`);
+        client.end();
+        res.redirect(`/success/${result.rows[0].uuid}`)
+      })
+      .catch(e => console.log(e) || client.end())
     })
     .catch(e => console.log(e) || client.end() )
 });
+
+app.get('/admin/edit/:uuid', (req, res) =>
+  editTemplate(req.params.uuid)
+    .then(thing => {
+      res.send(thing)
+    })
+    .catch(console.log));
+
+app.post('/admin/edit/:uuid', (req, res) =>
+  edit(req.params.uuid, req.body)
+    .then(r => res.send(adminTemplate(r)))
+    .catch(console.log));
 
 app.get('/admin/randomize', (req, res) => {
   randomize()

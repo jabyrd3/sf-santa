@@ -24,6 +24,7 @@ module.exports = (rows) => `<!doctype html>
                 <th>recipient</th>
                 <th>cool with international</th>
                 <th></th>
+                <th></th>
             </thead>
             <tbody>
             ${_.sortBy(rows, 'email').map(row =>
@@ -36,13 +37,13 @@ module.exports = (rows) => `<!doctype html>
                         return target ? target.name : null
                     })()}</td>
                     <td>${row.international}</td>
-                    <td><a href="/delete/${row.uuid}">delete</a></td>
+                    <td><a href="/admin/delete/${row.uuid}">delete</a></td>
+                    <td><a href="/admin/edit/${row.uuid}">edit</a></td>
                 </tr>`).join(' ')}
             </tbody>            
         </table>
         <div class="flex-wrap center">
             <a href="/admin/randomize">Randomize!</a>
-            <a href="/admin/dedupe">dedupe</a>
         </div>
       </div>
     </body>
