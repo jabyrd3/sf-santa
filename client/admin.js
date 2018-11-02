@@ -33,7 +33,7 @@ module.exports = (rows) => `<!doctype html>
                     <td>${row.country}</td>
                     <td>${(()=>{
                         const target = rows.find(r => r.uuid === row.recipient)
-                        return target ? target.name : null
+                        return target ? target.name : false
                     })()}</td>
                     <td><a href="/admin/delete/${row.uuid}">delete</a></td>
                     <td><a href="/admin/edit/${row.uuid}">edit</a></td>

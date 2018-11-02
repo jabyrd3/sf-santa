@@ -83,7 +83,7 @@ app.get('/admin/delete/:uuid', (req, res) => {
         })
         .then(rows => {
           client.end();
-          res.send(adminTemplate(rows.rows));
+          res.redirect('/admin');
         })
         .catch(e => console.log(e) || client.end());
 
@@ -120,7 +120,7 @@ app.get('/admin/edit/:uuid', (req, res) =>
 
 app.post('/admin/edit/:uuid', (req, res) =>
   edit(req.params.uuid, req.body)
-    .then(r => res.send(adminTemplate(r)))
+    .then(r => res.redirect('/admin'))
     .catch(console.log));
 
 app.get('/admin/randomize', (req, res) => {
