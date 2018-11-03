@@ -9,6 +9,7 @@ const successTemplate = require('../client/success.js');
 const clientTemplate = require('../client/index.js');
 const adminTemplate = require('../client/admin.js');
 const editTemplate = require('../client/edit.js');
+const adminSubmit = require('../client/admin-submit.js');
 const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
@@ -66,7 +67,7 @@ app.get('/admin', (req, res) => {
       .catch(e=>console.log(e) || client.end());
     });
 });
-
+app.get('/admin/add', (req, res) => res.send(adminSubmit()));
 app.get('/admin/delete/:uuid', (req, res) => {
   const client = new Client(config.db);
   client.connect()
