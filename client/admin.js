@@ -28,7 +28,7 @@ module.exports = (rows) => `<!doctype html>
                 <th></th>
             </thead>
             <tbody>
-            ${_.sortBy(rows, 'email').map(row =>
+            ${_.sortBy(rows, 'country').map(row =>
                 `<tr>
                     <td>${row.name}</td>
                     <td>${row.email}</td>
