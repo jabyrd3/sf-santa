@@ -25,7 +25,7 @@ const mailer = require('./mailer.js');
 
 server.listen(config.port, '0.0.0.0');
 
-console.log('starting app');
+console.log('starting app herp');
 
 const client = new Client(config.db);
 client.connect()
