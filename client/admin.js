@@ -23,6 +23,7 @@ module.exports = (rows) => `<!doctype html>
                 <th>country</th>
                 <th>recipient</th>
                 <th>will ship abroad</th>
+                <th>id</th>
                 <th></th>
                 <th></th>
             </thead>
@@ -37,13 +38,19 @@ module.exports = (rows) => `<!doctype html>
                         return target ? target.name : false
                     })()}</td>
                     <td>${row.international}</td>
+                    <td>${row.recipient}</td>
                     <td><a href="/admin/delete/${row.uuid}">delete</a></td>
                     <td><a href="/admin/edit/${row.uuid}">edit</a></td>
                 </tr>`).join(' ')}
             </tbody>            
         </table>
         <div class="flex-wrap center">
-            <a href="/admin/randomize">Randomize!</a>
+            <div class="center">
+                <a href="/admin/randomize">Randomize!</a>
+            </div>
+            <div class="center">
+                <a href="/admin/sendmails">send all mails</a>
+            </div>
         </div>
       </div>
     </body>

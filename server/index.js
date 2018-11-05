@@ -5,11 +5,14 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const uuidv4 = require('uuid/v4');
+
 const successTemplate = require('../client/success.js');
 const clientTemplate = require('../client/index.js');
+const userTemplate = require('../client/user.js');
 const adminTemplate = require('../client/admin.js');
 const editTemplate = require('../client/edit.js');
 const adminSubmit = require('../client/admin-submit.js');
+
 const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
@@ -18,8 +21,12 @@ const gifs = fs.readdirSync('./client/gifs');
 const randomize = require('./randomize');
 const edit = require('./edit');
 
+const mailer = require('./mailer.js');
+
 server.listen(config.port, '0.0.0.0');
+
 console.log('starting app');
+
 const client = new Client(config.db);
 client.connect()
   .then(() => {
@@ -37,7 +44,8 @@ client.connect()
         "recipient" varchar(100),
         "uuid" varchar(100),
         "international" BOOLEAN,
-        "country" varchar(3)
+        "country" varchar(3),
+        "seen_page" BOOLEAN
       )`
     });
     client.end();
@@ -49,6 +57,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static('./client'));
 
 app.get('/', (req, res) => res.send(clientTemplate()));
+
+app.get('/user/:id', (req, res) => {
+  console.log('get user/id', req.params.id)
+  userTemplate(req.params.id)
+    .then(d=>res.send(d))
+    .catch(console.log)
+});
 
 app.get('/success/:id', (req, res) => res.send(successTemplate(req.params.id, gifs)));
 
@@ -110,6 +125,22 @@ app.post('/submit', (req, res)=>{
       .catch(e => console.log(e) || client.end())
     })
     .catch(e => console.log(e) || client.end() )
+});
+
+app.get('/admin/sendmails', (req, res) => {
+  const client = new Client(config.db);
+  client.connect()
+    .then(() => {
+      client.query('SELECT * FROM SANTA')
+        .then(result => {
+          result.rows.map(row =>
+            console.log(row) ||
+            mailer(row));
+        })
+        .catch(console.log)
+    })
+    .catch(console.log)
+  res.send('sent all emails woo');
 });
 
 app.get('/admin/edit/:uuid', (req, res) =>

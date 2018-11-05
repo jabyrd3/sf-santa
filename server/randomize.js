@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 const shakeAndBake = (rows, pool, release) => {
     let avail = rows.map(r => r.uuid);
-    console.log('jab avail', avail);
+    // console.log('jab avail', avail);
     return rows.map(row => new Promise((res, rej) => {
       const target = _.sample(avail.filter(r=>r !== row.uuid));
       avail = avail.filter(p => p !== target);
@@ -17,7 +17,7 @@ const shakeAndBake = (rows, pool, release) => {
           console.log('error:', err);
           return rej(err);
         }
-        console.log('single row finished', result.rows[0])
+        // console.log('single row finished', result.rows[0])
         return res(result.rows[0]);
       });
     }));
@@ -36,6 +36,8 @@ module.exports = () => {
       if(err)console.log(err);
       client.query('SELECT * FROM santa', (err, result) => {
         if(err)rej(err);
+        const countries = _.uniq(result.rows.map(r=>r.country));
+        console.log('countries', countries);
         release();
         return Promise
           .all(shakeAndBake(result.rows, pool, release))

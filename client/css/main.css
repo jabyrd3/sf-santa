@@ -23,6 +23,9 @@ h1{
   height: 100vh;
   overflow-y: visible;
 }
+.container.wide{
+  max-width: 80vw; 
+}
 h1{
   margin: 0 auto!important;
   max-width: 80vw;
@@ -209,6 +212,9 @@ fieldset input, fieldset label{
 }
 .center{
   justify-content:center;
+}
+div.center{
+  text-align: center;
 }
 .flex-wrap > div{
   flex: 1 0 0;
