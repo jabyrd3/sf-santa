@@ -38,7 +38,7 @@ module.exports = (rows) => `<!doctype html>
                         return target ? target.name : false
                     })()}</td>
                     <td>${row.international}</td>
-                    <td>${row.recipient}</td>
+                    <td>${row.uuid}</td>
                     <td><a href="/admin/delete/${row.uuid}">delete</a></td>
                     <td><a href="/admin/edit/${row.uuid}">edit</a></td>
                 </tr>`).join(' ')}
