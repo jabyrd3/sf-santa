@@ -65,7 +65,6 @@ module.exports = (uuid) => {
                             <div>
                               <label for="country">Country</label>
                               <input type="text" maxlength="3" name="country" value="${row.country}">
-                              <input type="hidden" name="recipient" value="${row.recipient}" />
                             </div>
                           </div>
                           <div class="flex-wrap center">
