@@ -9,7 +9,7 @@ module.exports = (uuid) => {
       .connect()
       .then(() => {
         console.log('pre first query');
-        return client.query('SELECT * FROM santa WHERE uuid=$1', [uuid], (err, result) => {
+        return client.query('UPDATE santa SET seen_page=true WHERE uuid=$1 RETURNING *', [uuid], (err, result) => {
           const theirData = result.rows[0];
           return client.query('SELECT * FROM santa WhERE uuid=$1', [theirData.recipient], (err, result)=> {
             const recData = result.rows[0];
