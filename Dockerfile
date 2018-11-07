@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:10
 WORKDIR /scripts
 ADD package.json /scripts/package.json
 ADD server /scripts/server
