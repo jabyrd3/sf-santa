@@ -17,8 +17,7 @@ module.exports = (emailee) => {
 
       go here: https://santa.dev.host/user/${emailee.uuid}
       to see instructions for what to do next. There'll be some info about who
-      your secret santa match is, their address, and a button or two for you to
-      press when you've sent them a gift.`
+      your secret santa match is and their address`
   }, (error, body) => {
     console.log(error, body);
   });
