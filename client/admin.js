@@ -44,6 +44,24 @@ module.exports = (rows) => `<!doctype html>
                 </tr>`).join(' ')}
             </tbody>            
         </table>
+        <h2>no-goodniks who ain't seen their santabuddy</h2>
+        <table>
+            <thead>
+                <th>name</th>
+                <th>email</th>
+                <th>recipient</th>
+            </thead>
+            <tbody>
+            ${_.sortBy(rows, 'name').filter(r=>!r.seen_page).map(row =>
+                `<tr>
+                    <td>${row.name}</td>
+                    <td>${row.email}</td>
+                    <td>${(()=>{
+                        const target = rows.find(r => r.uuid === row.recipient)
+                        return target ? target.name : false
+                    })()}</td>
+                </tr>`).join(' ')}
+        </table>
         <div class="flex-wrap center">
             <div class="center">
                 <a href="/admin/randomize">Randomize!</a>
