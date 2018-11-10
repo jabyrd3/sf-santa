@@ -44,7 +44,7 @@ module.exports = (rows) => `<!doctype html>
                 </tr>`).join(' ')}
             </tbody>            
         </table>
-        <h2>no-goodniks who ain't seen their santabuddy</h2>
+        <h2>Naught List</h2>
         <table>
             <thead>
                 <th>name</th>
@@ -68,6 +68,9 @@ module.exports = (rows) => `<!doctype html>
             </div>
             <div class="center">
                 <a href="/admin/sendmails">send all mails</a>
+            </div>
+            <div class="center">
+                <a href="/admin/sendnaughty">send mails to naughty list</a>
             </div>
         </div>
       </div>

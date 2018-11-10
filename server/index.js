@@ -47,8 +47,11 @@ client.connect()
         "country" varchar(3),
         "seen_page" BOOLEAN
       )`
+    }).then(() => {
+      client.end();
+    }).catch(e => {
+      console.log('table already exists')
     });
-    client.end();
   })
   .catch(e => console.log("db seed failed", e));
 
@@ -143,6 +146,22 @@ app.get('/admin/sendmails', (req, res) => {
   res.send('sent all emails woo');
 });
 
+app.get('/admin/sendnaughty', (req, res) => {
+  const client = new Client(config.db);
+  client.connect()
+    .then(() => {
+      client.query('SELECT * FROM SANTA WHERE seen_page = false')
+        .then(result => {
+          result.rows.map(row =>
+            console.log(row) ||
+            mailer(row));
+        })
+        .catch(console.log)
+    })
+    .catch(console.log)
+  res.send('sent all emails woo');
+});
+
 app.get('/admin/edit/:uuid', (req, res) =>
   editTemplate(req.params.uuid)
     .then(thing => {
@@ -174,3 +193,14 @@ app.get('/emails/:token', (req, res) => {
     })
     .catch(console.log);
 });
+
+// drain any proc errors to stdout
+process.on('uncaughtException', function(err) {
+  // todo: logut store state and info about locks, etc
+  console.log('uncaught exception', err);
+});
+
+process.on('unhandledRejection', function(reason, p){
+  console.log('unhandledReject', reason, p);
+});
+ 
