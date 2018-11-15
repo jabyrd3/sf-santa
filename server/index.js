@@ -5,7 +5,6 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const uuidv4 = require('uuid/v4');
-const register = require('./consul');
 
 const successTemplate = require('../client/success.js');
 const clientTemplate = require('../client/index.js');
@@ -15,6 +14,7 @@ const editTemplate = require('../client/edit.js');
 const adminSubmit = require('../client/admin-submit.js');
 const { Client } = require('pg')
 const config = require('../config');
+const register = require('consul-register')(config.consul);
 const cp = require('child_process');
 const fs = require('fs');
 const gifs = fs.readdirSync('./client/gifs');
@@ -24,7 +24,7 @@ const edit = require('./edit');
 const mailer = require('./mailer.js');
 
 server.listen(config.port, '0.0.0.0');
-register(config.consul);
+register();
 
 const client = new Client(config.db);
 client.connect()
@@ -191,39 +191,5 @@ app.get('/emails/:token', (req, res) => {
       client.query('SELECT * FROM santa', (err, result)=> res.json(result.rows));
     })
     .catch(console.log);
-});
-
-// drain any proc errors to stdout
-process.on('uncaughtException', function(err) {
-  // todo: logut store state and info about locks, etc
-  console.log('uncaught exception', err);
-  register(config.consul, true)
-    .then(process.exit);
-});
-
-process.once('SIGINT', function(err) {
-  // todo: logut store state and info about locks, etc
-  console.log('dereg with consul');
-  register(config.consul, true)
-    .then(process.exit);
-});
-
-process.once('SIGTERM', function(err) {
-  // todo: logut store state and info about locks, etc
-  console.log('dereg with consul');
-  register(config.consul, true)
-    .then(process.exit);
-});
-
-process.once('SIGUSR2', function () {
-  register(config.consul, true)
-  .then(() =>
-    process.kill(process.pid, 'SIGUSR2'));
-});
-
-process.on('unhandledRejection', function(reason, p){
-  console.log('unhandledReject', reason, p);
-  register(config.consul, true)
-    .then(()=>process.kill(process.pid, 'SIGUSR2'));
 });
 
