@@ -12,7 +12,6 @@ const userTemplate = require('../client/user.js');
 const adminTemplate = require('../client/admin.js');
 const editTemplate = require('../client/edit.js');
 const adminSubmit = require('../client/admin-submit.js');
-
 const { Client } = require('pg')
 const config = require('../config');
 const cp = require('child_process');
@@ -25,7 +24,43 @@ const mailer = require('./mailer.js');
 
 server.listen(config.port, '0.0.0.0');
 
+const postData = JSON.stringify({
+  "Name": "sf-santa",
+  "ID": uuidv4(),
+  "Check": {
+    "Name": "Santa",
+    "HTTP": "https://santa.dev.host/up",
+    "Interval": "5s",
+    "DeregisterCriticalServiceAfter": "10s"
+  },
+  "Tags": []
+});
+
 console.log('starting app herp');
+const req = http.request({
+  method: "PUT",
+  hostname: "jordanbyrd.com",
+  port: "8500",
+  path: "/v1/agent/service/register",
+  headers: {
+    'Content-Type': 'application/json',
+    'Content-Length': Buffer.byteLength(postData)
+  }
+
+}, (res) => {
+  console.log(`STATUS: ${res.statusCode}`);
+  console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+  res.setEncoding('utf8');
+  res.on('data', (chunk) => {
+    console.log(`BODY: ${chunk}`);
+  });
+  res.on('end', () => {
+    console.log('No more data in response.');
+  });
+});
+
+req.write(postData);
+req.end();
 
 const client = new Client(config.db);
 client.connect()
@@ -60,7 +95,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static('./client'));
 
 app.get('/', (req, res) => res.send(clientTemplate()));
-
+app.get('/up', (req, res) => res.send('yup'))
 app.get('/user/:id', (req, res) => {
   console.log('get user/id', req.params.id)
   userTemplate(req.params.id)
