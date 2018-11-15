@@ -24,7 +24,7 @@ const edit = require('./edit');
 const mailer = require('./mailer.js');
 
 server.listen(config.port, '0.0.0.0');
-register();
+register(config.consul);
 
 const client = new Client(config.db);
 client.connect()
@@ -197,17 +197,33 @@ app.get('/emails/:token', (req, res) => {
 process.on('uncaughtException', function(err) {
   // todo: logut store state and info about locks, etc
   console.log('uncaught exception', err);
-  register(true)
+  register(config.consul, true)
     .then(process.exit);
 });
 
-process.on('SIGINT', function(err) {
+process.once('SIGINT', function(err) {
   // todo: logut store state and info about locks, etc
   console.log('dereg with consul');
-  register(true)
+  register(config.consul, true)
     .then(process.exit);
 });
+
+process.once('SIGTERM', function(err) {
+  // todo: logut store state and info about locks, etc
+  console.log('dereg with consul');
+  register(config.consul, true)
+    .then(process.exit);
+});
+
+process.once('SIGUSR2', function () {
+  register(config.consul, true)
+  .then(() =>
+    process.kill(process.pid, 'SIGUSR2'));
+});
+
 process.on('unhandledRejection', function(reason, p){
   console.log('unhandledReject', reason, p);
+  register(config.consul, true)
+    .then(()=>process.kill(process.pid, 'SIGUSR2'));
 });
 

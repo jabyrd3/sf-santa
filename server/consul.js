@@ -1,16 +1,15 @@
 const http = require('http');
 const uuidv4 = require('uuid/v4');
 const serviceID = uuidv4();
-const config = require('../config');
-module.exports = (remove) => {
+module.exports = (config, remove) => {
   return new Promise((resolve, rej) => {
     if(!remove){
       const postData = JSON.stringify({
-        "Name": config.consul.name,
+        "Name": config.name,
         "ID": serviceID,
         "Check": {
           "Name": "Santa",
-          "HTTP": config.consul.checkurl,
+          "HTTP": config.checkurl,
           "Interval": "5s",
           "DeregisterCriticalServiceAfter": "10s"
         },
@@ -19,9 +18,9 @@ module.exports = (remove) => {
       console.log('starting app herp');
       const req = http.request({
         method: "PUT",
-        hostname: config.consul.hostname,
+        hostname: config.hostname,
         port: "8500",
-        protocol: config.consul.protocol,
+        protocol: config.protocol,
         path: "/v1/agent/service/register",
         headers: {
           'Content-Type': 'application/json',
@@ -45,8 +44,8 @@ module.exports = (remove) => {
       console.log("what fuck")
         const req = http.request({
           method: "PUT",
-          hostname: config.consul.hostname,
-          port: config.consul.port,
+          hostname: config.hostname,
+          port: config.port,
           path: `/v1/agent/service/deregister/${serviceID}`
         }, () => {
           console.log('whatter fuck')
