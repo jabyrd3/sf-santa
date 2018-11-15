@@ -6,7 +6,7 @@ module.exports = (remove) => {
   return new Promise((resolve, rej) => {
     if(!remove){
       const postData = JSON.stringify({
-        "Name": "sf-santa-test",
+        "Name": config.consul.name,
         "ID": serviceID,
         "Check": {
           "Name": "Santa",
