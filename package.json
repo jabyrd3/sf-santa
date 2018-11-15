@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "consul-register": "^1.0.0",
+    "consul-register": "^1.0.4",
     "cors": "^2.8.4",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
