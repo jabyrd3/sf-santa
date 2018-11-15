@@ -5,6 +5,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
 const uuidv4 = require('uuid/v4');
+const register = require('./consul');
 
 const successTemplate = require('../client/success.js');
 const clientTemplate = require('../client/index.js');
@@ -23,44 +24,7 @@ const edit = require('./edit');
 const mailer = require('./mailer.js');
 
 server.listen(config.port, '0.0.0.0');
-
-const postData = JSON.stringify({
-  "Name": "sf-santa",
-  "ID": uuidv4(),
-  "Check": {
-    "Name": "Santa",
-    "HTTP": "https://santa.dev.host/up",
-    "Interval": "5s",
-    "DeregisterCriticalServiceAfter": "10s"
-  },
-  "Tags": []
-});
-
-console.log('starting app herp');
-const req = http.request({
-  method: "PUT",
-  hostname: "jordanbyrd.com",
-  port: "8500",
-  path: "/v1/agent/service/register",
-  headers: {
-    'Content-Type': 'application/json',
-    'Content-Length': Buffer.byteLength(postData)
-  }
-
-}, (res) => {
-  console.log(`STATUS: ${res.statusCode}`);
-  console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-  res.setEncoding('utf8');
-  res.on('data', (chunk) => {
-    console.log(`BODY: ${chunk}`);
-  });
-  res.on('end', () => {
-    console.log('No more data in response.');
-  });
-});
-
-req.write(postData);
-req.end();
+register();
 
 const client = new Client(config.db);
 client.connect()
@@ -233,9 +197,17 @@ app.get('/emails/:token', (req, res) => {
 process.on('uncaughtException', function(err) {
   // todo: logut store state and info about locks, etc
   console.log('uncaught exception', err);
+  register(true)
+    .then(process.exit);
 });
 
+process.on('SIGINT', function(err) {
+  // todo: logut store state and info about locks, etc
+  console.log('dereg with consul');
+  register(true)
+    .then(process.exit);
+});
 process.on('unhandledRejection', function(reason, p){
   console.log('unhandledReject', reason, p);
 });
- 
+
