@@ -39,7 +39,7 @@ module.exports = (uuid) => {
               <div>
                 <h3>Your info:</h3>
                 <p>
-                  <a href="https://santa.dev.host/edit/${uuid}">Edit these values</a>
+                  <a class="button" href="https://santa.dev.host/edit/${uuid}">Edit these values</a><br />
                   ${theirData.name} <br />
                   ${theirData.fbname} <br />
                   ${theirData.address}${theirData.address2 !== 'null' && theirData.address2!==null? `, ${theirData.address2}` : ''} <br />
