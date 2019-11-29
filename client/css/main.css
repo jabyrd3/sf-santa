@@ -241,3 +241,6 @@ button:hover{
 .donate{
   margin-bottom: 20px;
 }
+.donate button{
+  z-index: 2000;
+}
