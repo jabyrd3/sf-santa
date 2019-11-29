@@ -220,7 +220,7 @@ div.center{
   text-align: center;
 }
 .flex-wrap.inline{
-  display: flex-inline;
+  display: inline-flex;
 }
 .flex-wrap > div{
   flex: 1 0 0;
