@@ -58,8 +58,12 @@ module.exports = () => `<!doctype html>
                 <label class="label-inline" for="international">i would be cool with <br/>shipping internationally</label>
               </div>
             </div>
-            <button role="submit">send</button>
-            <a class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
+            <div class="flex-wrap">
+              <button role="submit">send</button>
+            </div>
+            <div class="flex-wrap">
+              <a class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
+            </div>
         </form>
         <div class="snow-container">
           <div class="snow foreground"></div>
