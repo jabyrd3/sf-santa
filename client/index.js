@@ -19,11 +19,11 @@ module.exports = () => `<!doctype html>
             <label for="name">the name you use on facebook</label>
             <input id="fbname" type="text" name="fbname" autocomplete="fbname" required/>
 
-            <label for="name">your name</label>
-            <input id="fullname" type="text" name="name" autocomplete="name" required/>
-
             <label for="email">your email (just for x-change updates)</label> 
             <input id="email" type="email" name="email" required autocomplete="email"/>
+
+            <label for="name">name</label>
+            <input id="fullname" type="text" name="name" autocomplete="name" required/>
             <div class="flex-wrap">
               <div>
                 <label for="street-address">street</label>
