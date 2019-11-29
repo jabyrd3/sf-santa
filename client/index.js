@@ -58,10 +58,10 @@ module.exports = () => `<!doctype html>
                 <label class="label-inline" for="international">i would be cool with <br/>shipping internationally</label>
               </div>
             </div>
-            <div class="flex-wrap">
+            <div class="flex-wrap center">
               <button role="submit">send</button>
             </div>
-            <div class="flex-wrap">
+            <div class="flex-wrap center">
               <a class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
             </div>
         </form>
