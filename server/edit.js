@@ -31,13 +31,21 @@ const client = new Client(config.db);
             uuid])
         .then(result => {
           return client.query('SELECT * FROM santa', (err, result) =>{
-              if(err) rej(err);
               client.end();
+              if(err) rej(err);
               res(result.rows);
             });
         })
-        .catch(e => console.log(e) || rej(e))
+        .catch(e => {
+          console.log(e);
+          client.end();
+          rej(e);
+        })
       })
-      .catch(e => console.log(e) || rej(e));
+      .catch(e => {
+        console.log(e);
+        client.end();
+        rej(e);
+      });
   });
 };

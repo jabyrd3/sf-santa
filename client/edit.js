@@ -10,8 +10,8 @@ module.exports = (uuid) => {
       .connect()
       .then(() => {
         client.query('SELECT * FROM santa WHERE uuid=$1', [uuid], (err, result)=>{
-          if(err)rej(err);
           client.end()
+          if(err)rej(err);
           const row = result.rows[0];
           res(`<!doctype html>
               <html class="no-js" lang="">

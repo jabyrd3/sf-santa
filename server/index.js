@@ -136,11 +136,12 @@ app.get('/admin/sendmails', (req, res) => {
     .then(() => {
       client.query('SELECT * FROM SANTA')
         .then(result => {
+          client.end();
           result.rows.map(row =>
             console.log(row) ||
             mailer(row));
         })
-        .catch(console.log)
+        .catch(e=>console.log(e) || client.end())
     })
     .catch(console.log)
   res.send('sent all emails woo');
@@ -152,13 +153,14 @@ app.get('/admin/sendnaughty', (req, res) => {
     .then(() => {
       client.query('SELECT * FROM SANTA WHERE seen_page = false')
         .then(result => {
+          client.end();
           result.rows.map(row =>
             console.log(row) ||
             mailer(row));
         })
-        .catch(console.log)
+        .catch(e=>console.log(e)||client.end())
     })
-    .catch(console.log)
+    .catch(e=>console.log(e) || client.end())
   res.send('sent all emails woo');
 });
 
@@ -201,8 +203,11 @@ app.get('/emails/:token', (req, res) => {
   const client = new Client(config.db);
   client.connect()
     .then(() => {
-      client.query('SELECT * FROM santa', (err, result)=> res.json(result.rows));
+      client.query('SELECT * FROM santa', (err, result) => {
+        res.json(result.rows);
+        client.end();
+      });
     })
-    .catch(console.log);
+    .catch(e => console.log(e) || client.end());
 });
 
