@@ -45,7 +45,7 @@ module.exports = () => `<!doctype html>
                 <input id="zip" name="zip" required autocomplete="postal-code"></input>
               </div>
             </div>
-            <div class="flex-wrap">
+            <div class="flex-wrap inline">
               <div class="vert-middle">
                 <label for="country">Country</label>
                 <input type="text" maxlength="3" name="country">
