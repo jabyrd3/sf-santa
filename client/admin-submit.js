@@ -14,7 +14,7 @@ module.exports = () => `<!doctype html>
     <body>
     <div class="wreath"></div>
       <div class="container">
-        <h1>first annual street fighters<br/><span class="orange">SECRET GRITTY</span> gift x-change</h1>
+        <h1>second annual street fighters<br/>secret santa gift x-change</h1>
         <form method="POST" action="/submit" autocomplete="on">
             <label for="name">your name</label>
             <input id="fullname" type="text" name="name" autocomplete="name" required/>
@@ -61,7 +61,6 @@ module.exports = () => `<!doctype html>
               <button role="submit">send</button>
             </div>
         </form>
-        <div class="gritty"></div>
         <div class="snow-container">
           <div class="snow foreground"></div>
           <div class="snow foreground layered"></div>

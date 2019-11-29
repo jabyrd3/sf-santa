@@ -9,9 +9,9 @@ const mailgun = require('mailgun-js')({
 
 module.exports = (emailee) => {
   mailgun.messages().send({
-    from: 'Big Ol Gritty <gritty@santa.dev.host>',
+    from: 'tha elves <elves@santa.dev.host>',
     to: emailee.email,
-    subject: `yo, ${emailee.name.split(' ')[0]} sf secret gritty IMPORTANT info email!`,
+    subject: `yo, ${emailee.name.split(' ')[0]} sf secret santa IMPORTANT info email!`,
     text: `
       hey ${emailee.name.split(' ')[0]}, its that time of year!
 

@@ -33,7 +33,7 @@ module.exports = (uuid) => {
         <body>
         <div class="wreath"></div>
           <div class="container wide">
-            <h1>first annual street fighters<br/><span class="orange">SECRET GRITTY</span> gift x-change</h1>
+            <h1>second annual street fighters<br/> secret santa gift x-change</h1>
             <div class="flex-wrap success">
               <div>
                 <h3>Your info:</h3>
@@ -46,7 +46,7 @@ module.exports = (uuid) => {
                 <p>if any of this is incorrect, please dm tay or email <a mailto="me@mail.jordanbyrd.com">me</a> and we can fix it.</p>
               </div>
               <div>
-                <h3>Send a gritmas gift to:</h3>
+                <h3>Send a small gift to:</h3>
                 <p>
                   ${recData.name} <br />
                   ${recData.address}${recData.address2 !== 'null' && recData.address2!==null? `, ${recData.address2}` : ''} <br />
@@ -55,7 +55,6 @@ module.exports = (uuid) => {
                 </p>
               </div>
             </div>
-            <div class="gritty"></div>
             <div class="snow-container">
               <div class="snow foreground"></div>
               <div class="snow foreground layered"></div>
