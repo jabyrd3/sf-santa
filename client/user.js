@@ -39,6 +39,7 @@ module.exports = (uuid) => {
                 <h3>Your info:</h3>
                 <p>
                   ${theirData.name} <br />
+                  ${theirData.fbname} <br />
                   ${theirData.address}${theirData.address2 !== 'null' && theirData.address2!==null? `, ${theirData.address2}` : ''} <br />
                   ${theirData.city},  
                   ${theirData.state} ${theirData.zip} <br /> ${theirData.country} <br />
@@ -49,6 +50,7 @@ module.exports = (uuid) => {
                 <h3>Send a small gift to:</h3>
                 <p>
                   ${recData.name} <br />
+                  ${recData.fbname} <br />
                   ${recData.address}${recData.address2 !== 'null' && recData.address2!==null? `, ${recData.address2}` : ''} <br />
                   ${recData.city},  
                   ${recData.state} ${recData.zip} <br /> ${recData.country} <br />

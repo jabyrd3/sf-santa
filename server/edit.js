@@ -9,15 +9,17 @@ const client = new Client(config.db);
     client.connect()
       .then(() => {
         client.query(`UPDATE santa SET name=$1,
-          email=$2,
-          address=$3,
-          address2=$4,
-          city=$5,
-          state=$6,
-          zip=$7,
-          recipient=$8,
-          country=$9 WHERE uuid=$10 RETURNING *`, [
+          fbname=$2,
+          email=$3,
+          address=$4,
+          address2=$5,
+          city=$6,
+          state=$7,
+          zip=$8,
+          recipient=$9,
+          country=$10 WHERE uuid=$11 RETURNING *`, [
             body.name,
+            body.fbname,
             body.email,
             body['street-address'],
             body['address-line2'],

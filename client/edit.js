@@ -30,8 +30,10 @@ module.exports = (uuid) => {
                     <div class="container">
                       <h1>secret santa admin – editing ${row.name} </h1>
                       <form method="POST" action="/admin/edit/${row.uuid}">
-                          <label for="name">name</label>
+                          <label for="name">mail name</label>
                           <input id="fullname" type="text" name="name" value="${row.name}"/>
+                          <label for="fbname">fb name</label>
+                          <input id="fbname" type="text" name="fbname" value="${row.fbname}"/>
                           <label for="email">email (just for x-change updates)</label> 
                           <input value="${row.email}" id="email" type="email" name="email"/>
                           <div class="flex-wrap">

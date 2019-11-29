@@ -16,8 +16,11 @@ module.exports = () => `<!doctype html>
       <div class="container">
         <h1>second annual street fighters<br/> secret santa gift x-change</h1>
         <form method="POST" action="/submit" autocomplete="on">
-            <label for="name">your name</label>
+            <label for="name">your mail name</label>
             <input id="fullname" type="text" name="name" autocomplete="name" required/>
+
+            <label for="name">your fb acct name</label>
+            <input id="fbname" type="text" name="fbname" autocomplete="fbname" required/>
 
             <label for="email">your email (just for x-change updates)</label> 
             <input id="email" type="email" name="email" required autocomplete="email"/>
@@ -56,6 +59,7 @@ module.exports = () => `<!doctype html>
               </div>
             </div>
             <div class="flex-wrap center">
+              <a href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Suggested donation $10 </a>
               <button role="submit">send</button>
             </div>
         </form>

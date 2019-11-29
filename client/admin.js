@@ -19,6 +19,7 @@ module.exports = (rows) => `<!doctype html>
         <table>
             <thead>
                 <th>name</th>
+                <th>fbname</th>
                 <th>email</th>
                 <th>country</th>
                 <th>recipient</th>
@@ -31,6 +32,7 @@ module.exports = (rows) => `<!doctype html>
             ${_.sortBy(rows, 'country').map(row =>
                 `<tr>
                     <td>${row.name}</td>
+                    <td>${row.fbname}</td>
                     <td>${row.email}</td>
                     <td>${row.country}</td>
                     <td>${(()=>{

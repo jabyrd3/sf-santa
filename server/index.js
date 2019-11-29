@@ -34,6 +34,7 @@ client.connect()
       text: `CREATE TABLE IF NOT EXISTS "santa"(
         "id" SERIAL,
         "name" varchar(100),
+        "fbname" varchar(100),
         "email" varchar(100),
         "address" varchar(200),
         "address2" varchar(200),
@@ -116,8 +117,8 @@ app.post('/submit', (req, res)=>{
     .then(() => {
       client.query({
         name: 'testingupdate',
-        text: 'INSERT INTO santa (name, email, address, recipient, uuid, address2, city, state, zip, international, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
-        values: [req.body.name, req.body.email, req.body['street-address'], null, uuidv4(), req.body['address-2'], req.body.city, req.body.state, req.body.zip, req.body.international||false, req.body.country || null],
+        text: 'INSERT INTO santa (name, fbname, email, address, recipient, uuid, address2, city, state, zip, international, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *',
+        values: [req.body.name, req.body.fbname, req.body.email, req.body['street-address'], null, uuidv4(), req.body['address-2'], req.body.city, req.body.state, req.body.zip, req.body.international||false, req.body.country || null],
       })
       .then(result => {
         console.log(`${req.body.name} signed up for secret santa, id is ${result.rows[0].id}`);
