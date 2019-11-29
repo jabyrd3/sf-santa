@@ -27,7 +27,7 @@ module.exports = () => `<!doctype html>
                 <input id="address-line1" name="street-address" required autocomplete="address-line1"></input>
               </div>
               <div>
-                <label for="address-2">apartment or second (optional, put a space if none)</label>
+                <label for="address-2">APT (optional, put a space if none)</label>
                 <input id="address-line2" name="address-line2" required autocomplete="address-line2"></input>
               </div>
             </div>
