@@ -45,12 +45,12 @@ module.exports = () => `<!doctype html>
                 <input id="zip" name="zip" required autocomplete="postal-code"></input>
               </div>
             </div>
-            <div class="flex-wrap inline">
+            <div class="flex-wrap">
               <div class="vert-middle">
                 <label for="country">Country</label>
                 <input type="text" maxlength="3" name="country">
               </div>
-              <div class="vert-middle flex-wrap grow">
+              <div class="vert-middle flex-wrap inline">
                 <label for="international">i would be cool with <br/>shipping internationally</label>
                 <input type="checkbox" name="international"/>
               </div>
