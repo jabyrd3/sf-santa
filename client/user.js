@@ -11,12 +11,14 @@ module.exports = (uuid) => {
         console.log('pre first query');
         return client.query('UPDATE santa SET seen_page=true WHERE uuid=$1 RETURNING *', [uuid], (err, result) => {
           const theirData = result.rows[0];
+          console.log('jabbo', theirData)
           if(!theirData){
             return res('that account isn\'t available. if you have multiple emails from us, use the other link.');
           }
           return client.query('SELECT * FROM santa WHERE uuid=$1', [theirData.recipient], (err, result)=> {
             const recData = result.rows[0];
             client.end();
+
             res(`<!doctype html>
     <html class="no-js" lang="">
         <head>
