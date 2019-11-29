@@ -50,8 +50,8 @@ module.exports = () => `<!doctype html>
                 <label for="country">Country</label>
                 <input type="text" maxlength="3" name="country">
               </div>
-              <div class="vert-middle flex-wrap inline">
-                <input type="checkbox" name="international"/>
+              <div class="vert-middle flex-wrap inline" style="padding-top: 20px;padding-left:20px;">
+                <input style="width:20px;" type="checkbox" name="international"/>
                 <label class="label-inline" for="international">i would be cool with <br/>shipping internationally</label>
               </div>
             </div>
