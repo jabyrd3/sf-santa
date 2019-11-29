@@ -60,7 +60,7 @@ module.exports = () => `<!doctype html>
             </div>
             <div class="flex-wrap center">
               <div>
-                <a class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Suggested donation $10 </a>
+                <a class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
               </div>
               <div>
                 <button role="submit">send</button>
