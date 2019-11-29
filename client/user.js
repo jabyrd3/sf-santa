@@ -35,7 +35,7 @@ module.exports = (uuid) => {
         <body>
         <div class="wreath"></div>
           <div class="container wide">
-            <h1>second annual street fighters secret santa gift x-change</h1>
+            <h1>secret street fight gift exchange 2019</h1>
             <div class="flex-wrap success">
               <div>
                 <h3>Your info:</h3>

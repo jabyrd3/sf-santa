@@ -14,7 +14,10 @@ module.exports = () => `<!doctype html>
     <body>
     <div class="wreath"></div>
       <div class="container">
-        <h1>second annual street fighters secret santa gift x-change</h1>
+        <h1>secret street fight gift exchange 2019</h1>
+        <div class="flex-wrap">
+          <a target="_blank" class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
+        </div>
         <form method="POST" action="/submit" autocomplete="on">
             <label for="name">the name you use on facebook</label>
             <input id="fbname" type="text" name="fbname" autocomplete="fbname" required/>
@@ -60,9 +63,6 @@ module.exports = () => `<!doctype html>
             </div>
             <div class="flex-wrap center">
               <button role="submit">send</button>
-            </div>
-            <div class="flex-wrap center">
-              <a target="_blank" class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
             </div>
         </form>
         <div class="snow-container">

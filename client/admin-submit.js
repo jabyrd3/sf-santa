@@ -14,7 +14,7 @@ module.exports = () => `<!doctype html>
     <body>
     <div class="wreath"></div>
       <div class="container">
-        <h1>second annual street fighters secret santa gift x-change</h1>
+        <h1>secret street fight gift exchange 2019</h1>
         <form method="POST" action="/submit" autocomplete="on">
             <label for="name">your name</label>
             <input id="fullname" type="text" name="name" autocomplete="name" required/>
