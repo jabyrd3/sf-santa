@@ -61,7 +61,6 @@ module.exports = () => `<!doctype html>
               <button role="submit">send</button>
             </div>
         </form>
-        <div class="gritty"></div>
         <div class="snow-container">
           <div class="snow foreground"></div>
           <div class="snow foreground layered"></div>
