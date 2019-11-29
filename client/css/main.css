@@ -213,6 +213,9 @@ fieldset input, fieldset label{
 .center{
   justify-content:center;
 }
+.vert-middle{
+  align-self: center;
+}
 div.center{
   text-align: center;
 }

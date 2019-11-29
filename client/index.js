@@ -46,11 +46,11 @@ module.exports = () => `<!doctype html>
               </div>
             </div>
             <div class="flex-wrap">
-              <div>
+              <div class="vert-middle">
                 <label for="country">Country</label>
                 <input type="text" maxlength="3" name="country">
               </div>
-              <div>
+              <div class="vert-middle">
                 <label for="international">i would be cool with shipping internationally</label>
               </div>
               <div>
