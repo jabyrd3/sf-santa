@@ -17,8 +17,8 @@ module.exports = (id, gifs) => `<!doctype html>
       <div class="container">
         <div class="success">
             <h1>ALL DONE!</h1>
-            <p>when we've done the selection, your secret santa partner will be visible at this page.</p>
-            <p>we will also send an email with a link to this page when it's ready</p>
+            <p>when we've done the selection, your secret santa partner will be visible <a href="https://santa.dev.host/user/${id}">at this link.</a></p>
+            <p>we will also send an email with a link to the page when it's ready</p>
             <div class="img-wrap">
               <img src="/gifs/${_.sample(gifs)}" />
             </div>
