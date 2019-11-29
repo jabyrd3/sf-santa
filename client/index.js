@@ -53,7 +53,7 @@ module.exports = () => `<!doctype html>
               <div class="vert-middle">
                 <label for="international">i would be cool with shipping internationally</label>
               </div>
-              <div>
+              <div class="vert-middle">
                 <input type="checkbox" name="international"/>
               </div>
             </div>
