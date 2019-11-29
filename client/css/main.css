@@ -235,3 +235,6 @@ button{
   background-color: green!important;
   color: black!important;
 }
+button:hover{
+  background-color: red!important;
+}
