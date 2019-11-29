@@ -50,13 +50,13 @@ module.exports = (uuid) => {
               </div>
               <div>
                 <h3>Send a small gift to:</h3>
-                <p>
+                ${recData ? `<p>
                   ${recData.name} <br />
                   ${recData.fbname} <br />
                   ${recData.address}${recData.address2 !== 'null' && recData.address2!==null? `, ${recData.address2}` : ''} <br />
                   ${recData.city},  
                   ${recData.state} ${recData.zip} <br /> ${recData.country} <br />
-                </p>
+                </p>` : ''}
               </div>
             </div>
             <div class="snow-container">
