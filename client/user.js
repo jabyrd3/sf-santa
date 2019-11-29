@@ -39,13 +39,14 @@ module.exports = (uuid) => {
               <div>
                 <h3>Your info:</h3>
                 <p>
+                  <a href="https://santa.dev.host/edit/${uuid}">Edit these values</a>
                   ${theirData.name} <br />
                   ${theirData.fbname} <br />
                   ${theirData.address}${theirData.address2 !== 'null' && theirData.address2!==null? `, ${theirData.address2}` : ''} <br />
                   ${theirData.city},  
                   ${theirData.state} ${theirData.zip} <br /> ${theirData.country} <br />
                 </p>
-                <p>if any of this is incorrect, please dm tay or email <a mailto="me@mail.jordanbyrd.com">me</a> and we can fix it.</p>
+                
               </div>
               <div>
                 <h3>Send a small gift to:</h3>

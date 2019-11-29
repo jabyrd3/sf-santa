@@ -162,6 +162,18 @@ app.get('/admin/sendnaughty', (req, res) => {
   res.send('sent all emails woo');
 });
 
+app.get('/edit/:uuid', (req, res) =>
+  editTemplate(req.params.uuid)
+    .then(thing => {
+      res.send(thing)
+    })
+    .catch(console.log));
+
+app.post('/edit/:uuid', (req, res) =>
+  edit(req.params.uuid, req.body)
+    .then(r => res.redirect('/admin'))
+    .catch(console.log));
+
 app.get('/admin/edit/:uuid', (req, res) =>
   editTemplate(req.params.uuid)
     .then(thing => {
