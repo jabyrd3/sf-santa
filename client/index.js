@@ -15,7 +15,7 @@ module.exports = () => `<!doctype html>
     <div class="wreath"></div>
       <div class="container">
         <h1>secret street fight gift exchange 2019</h1>
-        <div class="flex-wrap" class="donate">
+        <div class="flex-wrap donate">
           <a target="_blank" class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
         </div>
         <form method="POST" action="/submit" autocomplete="on">
