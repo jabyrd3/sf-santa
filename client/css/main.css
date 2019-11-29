@@ -238,3 +238,6 @@ button{
 button:hover{
   background-color: red!important;
 }
+.donate{
+  z-index: 5000;
+}
