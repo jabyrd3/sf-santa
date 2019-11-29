@@ -242,6 +242,6 @@ button:hover{
   margin-bottom: 20px;
   z-index: 2000;
 }
-.donate button{
+.donate .button{
   z-index: 2000;
 }
