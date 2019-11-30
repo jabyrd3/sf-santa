@@ -27,6 +27,7 @@ module.exports = (uuid) => {
                       <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
                   </head>
                   <body>
+                    <!-- ${JSON.stringify(row, null, 2)} -->
                     <div class="container">
                       <h1>secret santa admin – editing ${row.name} </h1>
                       <form method="POST" action="/admin/edit/${row.uuid}">
