@@ -245,4 +245,5 @@ button:hover{
 .donate .button{
   z-index: 2000;
   background-color: red;
+  border: none;
 }
