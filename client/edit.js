@@ -61,9 +61,6 @@ module.exports = (uuid) => {
                             </div>
                           </div>
                           <div class="flex-wrap">
-                            <input disabled="true" type="text" name="recipient" value="${row.recipient}" placeholder="recipient id"/>
-                          </div>
-                          <div class="flex-wrap">
                             <div>
                               <label for="country">Country</label>
                               <input type="text" maxlength="3" name="country" value="${row.country}">
