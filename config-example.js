@@ -5,5 +5,18 @@ module.exports = {
     database: 'postgres',
     host: 'postgres'
   },
-  magicToken: '' // some string for validating api clients, akin to the emailer
+  magicToken: 'somerandomvalue',
+  mailkey: 'mailgun-key',
+  maildomain: 'mailgundomain',
+  // prob don't use this lol
+  // consul: {
+  //   name: 'sf-test-run',
+  //   hostname: 'adf',
+  //   port: 8500,
+  //   protocol: 'http:',
+  //   check: {
+  //     checkurl: 'https://santa.dev.host/up',
+  //     interval: '5s'
+  //   }
+  // } 
 };
