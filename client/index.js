@@ -23,7 +23,7 @@ module.exports = () => `<!doctype html>
             <input id="fbname" type="text" name="fbname" autocomplete="fbname" required/>
 
             <label for="email">your email (just for x-change updates)</label> 
-            <input id="email" type="email" name="email" required autocomplete="email" style="padding-bottom:24px;"/>
+            <input id="email" type="email" name="email" required autocomplete="email" style="margin-bottom:48px;"/>
             <label for="name">name</label>
             <input id="fullname" type="text" name="name" autocomplete="name" required/>
             <div class="flex-wrap">
