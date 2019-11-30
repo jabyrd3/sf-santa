@@ -67,7 +67,7 @@ module.exports = (uuid) => {
                               <input type="text" maxlength="3" name="country" value="${row.country}">
                             </div>
                             <div class="vert-middle flex-wrap inline" style="padding-top: 20px;padding-left:20px;">
-                              <input id="international" style="width:20px;" type="checkbox" name="international" checked="${row.international !== 'null'}"/>
+                              <input id="international" style="width:20px;" type="checkbox" name="international" checked="${row.international !== null}"/>
                               <label class="label-inline" for="international">i would be cool with <br/>shipping internationally</label>
                             </div>
                           </div>
