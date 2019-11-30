@@ -17,7 +17,8 @@ const client = new Client(config.db);
           state=$7,
           zip=$8,
           recipient=$9,
-          country=$10 WHERE uuid=$11 RETURNING *`, [
+          country=$10,
+          international=$11 WHERE uuid=$12 RETURNING *`, [
             body.name,
             body.fbname,
             body.email,
@@ -28,6 +29,7 @@ const client = new Client(config.db);
             body.zip,
             body.recipient,
             body.country,
+            body.international,
             uuid])
         .then(result => {
           return client.query('SELECT * FROM santa', (err, result) =>{

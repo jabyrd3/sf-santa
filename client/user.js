@@ -50,7 +50,7 @@ module.exports = (uuid) => {
                 
               </div>
               <div>
-                <h3>Send a small gift to:</h3>
+                <h3>Send a gift to:</h3>
                 ${recData ? `<p>
                   ${recData.name} <br />
                   ${recData.fbname} <br />
