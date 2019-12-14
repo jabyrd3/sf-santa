@@ -59,7 +59,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static('./client'));
 
-app.get('/', (req, res) => res.send(clientTemplate()));
+app.get('/', (req, res) => res.send(clientTemplate(config)));
 app.get('/up', (req, res) => res.send('yup'))
 app.get('/user/:id', (req, res) => {
   console.log('get user/id', req.params.id)

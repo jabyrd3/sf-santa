@@ -1,4 +1,4 @@
-module.exports = () => `<!doctype html>
+module.exports = (config) => `<!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
@@ -18,7 +18,7 @@ module.exports = () => `<!doctype html>
         <div class="flex-wrap donate center">
           <a target="_blank" class="button" href="https://www.paypal.com/pools/c/8jCPo9Cy0S">Click here to donate to Lonnie's shoebox</a>
         </div>
-        <form method="POST" action="/submit" autocomplete="on">
+        ${!config.disableSignups ? `<form method="POST" action="/submit" autocomplete="on">
             <label for="name">the name you use on facebook</label>
             <input id="fbname" type="text" name="fbname" autocomplete="fbname" required/>
 
@@ -63,7 +63,7 @@ module.exports = () => `<!doctype html>
             <div class="flex-wrap center">
               <button role="submit">send</button>
             </div>
-        </form>
+        </form>` : `<h3>Sorry, signups are closed for this year</h3>`}
         <div class="snow-container">
           <div class="snow foreground"></div>
           <div class="snow foreground layered"></div>

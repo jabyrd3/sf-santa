@@ -16,6 +16,17 @@ module.exports = (rows) => `<!doctype html>
     <body>
       <div class="container">
         <h1>secret santa admin – ${rows.length} signups</h1>
+        <div class="flex-wrap center">
+            <div class="center">
+                <a href="/admin/randomize">Randomize!</a>
+            </div>
+            <div class="center">
+                <a href="/admin/sendmails">send all mails</a>
+            </div>
+            <div class="center">
+                <a href="/admin/sendnaughty">send mails to naughty list</a>
+            </div>
+        </div>
         <table>
             <thead>
                 <th>name</th>
