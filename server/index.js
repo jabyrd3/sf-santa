@@ -154,8 +154,9 @@ app.get('/admin/sendnaughty', (req, res) => {
       client.query('SELECT * FROM SANTA WHERE seen_page = false')
         .then(result => {
           client.end();
+          console.log(`sending ${result.rows.length} mails to naughty list`);
           result.rows.map(row =>
-            console.log(row) ||
+            console.log(`sending to ${row.name}`) ||
             mailer(row));
         })
         .catch(e=>console.log(e)||client.end())
