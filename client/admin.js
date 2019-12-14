@@ -65,6 +65,7 @@ module.exports = (rows) => `<!doctype html>
                 <th>recipient</th>
             </thead>
             <tbody>
+            <!-- ${JSON.stringify(rows, null, 2)} -->
             ${_.sortBy(rows, 'name').filter(r=>!r.seen_page).map(row =>
                 `<tr>
                     <td>${row.name}</td>
