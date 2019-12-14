@@ -151,7 +151,7 @@ app.get('/admin/sendnaughty', (req, res) => {
   const client = new Client(config.db);
   client.connect()
     .then(() => {
-      client.query('SELECT * FROM SANTA WHERE seen_page = false')
+      client.query('SELECT * FROM SANTA WHERE seen_page IS NULL')
         .then(result => {
           client.end();
           console.log(`sending ${result.rows.length} mails to naughty list`);
