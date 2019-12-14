@@ -57,7 +57,7 @@ module.exports = (rows) => `<!doctype html>
                 </tr>`).join(' ')}
             </tbody>            
         </table>
-        <h2>Naught List</h2>
+        <h2>Naught List (${rows.filter(r=>!r.seen_page)})</h2>
         <table>
             <thead>
                 <th>name</th>
